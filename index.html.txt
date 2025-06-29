@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jomarie's Portfolio</title>
+    <!-- Tailwind CSS CDN for utility classes -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Font: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="font-inter">
+
+    <!-- Login Overlay -->
+    <div id="login-overlay" class="login-overlay fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-75 z-50">
+        <div class="login-container bg-white p-8 rounded-lg shadow-xl w-96 text-center">
+            <h2 class="text-3xl font-bold mb-6 text-gray-800">Portfolio Login</h2>
+            <form id="login-form" class="flex flex-col space-y-4">
+                <label for="username" class="text-left text-gray-700 font-medium">Username:</label>
+                <input type="text" id="username" name="username" required class="p-3 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500">
+                <label for="password" class="text-left text-gray-700 font-medium">Password:</label>
+                <input type="password" id="password" name="password" required class="p-3 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500">
+                <button type="submit" class="bg-blue-600 text-white py-3 px-6 rounded-md font-semibold hover:bg-blue-700 transition duration-300">Login</button>
+            </form>
+            <p class="login-tip mt-4 text-gray-600">Hint: username 'jomarie', password 'jomarie4'</p>
+            <p class="security-warning mt-6 text-red-600 text-sm font-semibold">
+                <strong>WARNING:</strong> This login is for demonstration ONLY.
+                It provides NO real security and can be easily bypassed.
+                Do NOT use this for protecting sensitive information.
+            </p>
+        </div>
+    </div>
+
+    <!-- Portfolio Content (hidden by default) -->
+    <div id="portfolio-content" class="hidden">
+        <!-- Navbar -->
+        <nav class="navbar bg-blue-700 text-white p-4 shadow-lg fixed w-full top-0 z-40">
+            <ul class="flex justify-center space-x-8">
+                <li><a href="#about" class="hover:text-blue-200 transition duration-300">About Me</a></li>
+                <li><a href="#resume" class="hover:text-blue-200 transition duration-300">Family Background</a></li>
+                <li><a href="#certifications" class="hover:text-blue-200 transition duration-300">Certifications</a></li>
+                <li><a href="#contact" class="hover:text-blue-200 transition duration-300">Contact</a></li>
+                <li><button id="logout-btn" class="logout-btn bg-red-500 hover:bg-red-600 text-white py-1 px-4 rounded-md transition duration-300">Logout</button></li>
+            </ul>
+        </nav>
+
+        <!-- Hero Section -->
+        <div class="hero-section flex flex-col md:flex-row items-center justify-center p-8 bg-gradient-to-r from-blue-500 to-purple-600 text-white min-h-screen pt-24">
+            <div class="text-center md:text-left md:mr-8 mb-8 md:mb-0">
+                <p class="greeting text-3xl md:text-4xl">Hi</p>
+                <p class="name text-6xl md:text-8xl font-extrabold my-2">I'm <span class="text-yellow-300">Jomarie</span></p>
+                <p class="role text-xl md:text-2xl mt-4">a Diploma in Information Technology Student</p>
+            </div>
+            <div class="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-8 border-white shadow-xl">
+                 <img src="https://placehold.co/640x640/5D3FD3/FFFFFF?text=JOMARIE" alt="Jomarie Nazareth Photo" class="w-full h-full object-cover"/>
+            </div>
+        </div>
+
+        <!-- About Me Section -->
+        <section id="about" class="py-16 px-8 bg-gray-50 text-gray-800">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-4xl font-bold mb-8 text-center text-blue-700">About Me</h2>
+                <p class="text-lg leading-relaxed mb-6">Passionate about crafting compelling stories through video editing and an avid mobile gamer always seeking the next challenge.</p>
+                <h3 class="text-2xl font-semibold mb-4 text-blue-600">Education</h3>
+                <p class="text-lg mb-2">Diploma in Information Technology at Asian College, Dumaguete City, Philippines</p>
+                <p class="text-lg mb-6">Relevant Coursework: Object-Oriented Programming, Data Structures, Web Development Fundamentals </p>
+                <h3 class="text-2xl font-semibold mb-4 text-blue-600">Career Goals</h3>
+                <p class="text-lg leading-relaxed mb-6">Seeking an entry-level role or internship within the IT industry to apply foundational knowledge in software development and multimedia, aiming to contribute to projects involving digital content creation, UI/UX, or game development.</p>
+                <h3 class="text-2xl font-semibold mb-4 text-blue-600">Skills Summary</h3>
+                <ul class="list-disc list-inside text-lg space-y-2">
+                    <li>Video Editor</li>
+                    <li>Problem Solving</li>
+                    <li>Computer Skills</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Family Background Section (merged from previous artifact) -->
+        <section id="resume" class="family-background-section py-16 px-8 bg-gray-100 text-gray-800">
+            <h2 class="text-4xl font-bold mb-8 text-gray-800 text-center">Family Background</h2>
+            <div class="family-tree-container relative bg-white p-8 rounded-xl shadow-lg border border-gray-200 w-11/12 max-w-4xl mx-auto text-center">
+                <div class="tree-title text-2xl font-semibold mb-8 text-gray-700">Our Family Tree</div>
+
+                <div class="parents-row flex justify-center space-x-20 mb-16 relative z-10">
+                    <!-- Father Member -->
+                    <div class="member father flex flex-col items-center">
+                        <img class="w-28 h-28 rounded-full object-cover border-4 border-blue-400 shadow-md mb-2" src="https://placehold.co/90x90/cccccc/000000?text=FATHER" alt="Father">
+                        <span class="member-name text-lg font-medium text-gray-800">Father</span>
+                    </div>
+                    <!-- Mother Member -->
+                    <div class="member mother flex flex-col items-center">
+                        <img class="w-28 h-28 rounded-full object-cover border-4 border-pink-400 shadow-md mb-2" src="https://placehold.co/90x90/cccccc/000000?text=MOTHER" alt="Mother">
+                        <span class="member-name text-lg font-medium text-gray-800">Mother</span>
+                    </div>
+                </div>
+
+                <div class="children-row flex justify-center space-x-12 md:space-x-16 relative z-10">
+                    <!-- Sister Member -->
+                    <div class="member sister flex flex-col items-center">
+                        <img class="w-28 h-28 rounded-full object-cover border-4 border-purple-400 shadow-md mb-2" src="https://placehold.co/90x90/cccccc/000000?text=SISTER" alt="Sister">
+                        <span class="member-name text-lg font-medium text-gray-800">Sister</span>
+                    </div>
+                    <!-- Me Member (Current User) -->
+                    <div class="member me flex flex-col items-center">
+                        <img class="w-28 h-28 rounded-full object-cover border-4 border-green-400 shadow-md mb-2" src="https://placehold.co/90x90/cccccc/000000?text=ME" alt="Me">
+                        <span class="member-name text-lg font-medium text-gray-800">Me</span>
+                    </div>
+                    <!-- Brother Member -->
+                    <div class="member brother flex flex-col items-center">
+                        <img class="w-28 h-28 rounded-full object-cover border-4 border-yellow-400 shadow-md mb-2" src="https://placehold.co/90x90/cccccc/000000?text=BROTHER" alt="Brother">
+                        <span class="member-name text-lg font-medium text-gray-800">Brother</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Certifications Section -->
+        <section id="certifications" class="py-16 px-8 bg-white text-gray-800">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-4xl font-bold mb-8 text-center text-blue-700">Certifications</h2>
+                <article class="mb-10 p-6 bg-gray-50 rounded-lg shadow-md border border-gray-200">
+                    <h3 class="text-2xl font-semibold mb-3 text-blue-600">Responsive Web Design Developer Certification</h3>
+                    <p class="text-lg text-gray-600 mb-4">Date: April 13, 2025</p>
+                    <img src="https://placehold.co/700x500/cccccc/000000?text=CERTIFICATE" alt="Free Code Camp Responsive Web Design Certificate" class="w-full h-auto rounded-lg shadow-lg mb-4"/>
+                    <p class="text-base leading-relaxed text-gray-700">This is a Free Code Camp "Responsive Web Design Developer Certification" awarded to Jomarie B. Nazareth on April 13, 2025. It signifies the successful completion of approximately 300 hours of work in responsive web design. The certificate is signed by Quincy Larson, Executive Director of freeCodeCamp.org.</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-16 px-8 bg-gray-50 text-gray-800">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-4xl font-bold mb-8 text-center text-blue-700">Contact Me</h2>
+                <form id="contact-form" class="bg-white p-8 rounded-lg shadow-md border border-gray-200 flex flex-col space-y-5">
+                    <label for="name" class="text-left text-gray-700 font-medium">Name:</label>
+                    <input type="text" id="name" name="name" required class="p-3 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500">
+                    <label for="email" class="text-left text-gray-700 font-medium">Email:</label>
+                    <input type="email" id="email" name="email" required class="p-3 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500">
+                    <label for="message" class="text-left text-gray-700 font-medium">Message:</label>
+                    <textarea id="message" name="message" rows="6" required class="p-3 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"></textarea>
+                    <button type="submit" class="bg-blue-600 text-white py-3 px-6 rounded-md font-semibold hover:bg-blue-700 transition duration-300">Send Message</button>
+                </form>
+                <div class="mt-8 text-center text-lg space-y-2">
+                    <p>Email: <a href="mailto:jnazareth.student@asiancollege.edu.ph" class="text-blue-600 hover:underline">jnazareth.student@asiancollege.edu.ph</a></p>
+                    <p>GitHub: <a href="https://github.com/your_Jomarie-04" target="_blank" class="text-blue-600 hover:underline">Your GitHub Profile</a></p>
+                    <p>Facebook: <a href="https://www.facebook.com/share/16d79HQK24/" target="_blank" class="text-blue-600 hover:underline">Your Facebook Profile</a></p>
+                    <p>Instagram: <a href="https://www.instagram.com/eu4riea?igsh=YzljYTk1ODg3Zg==" target="_blank" class="text-blue-600 hover:underline">Your Instagram Profile</a></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="bg-gray-800 text-white p-6 text-center">
+            <p class="mb-3">&copy; 2025 Jomarie. All rights reserved.</p>
+            <div class="social-links space-x-6 text-lg">
+                <a href="https://www.facebook.com/share/16d79HQK24/" target="_blank" class="hover:text-blue-400 transition duration-300">Facebook</a>
+                <a href="https://www.instagram.com/eu4riea?igsh=YzljYTk1ODg3Zg==" target="_blank" class="hover:text-blue-400 transition duration-300">Instagram</a>
+            </div>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

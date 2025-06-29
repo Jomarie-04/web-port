@@ -1,0 +1,850 @@
+/* Universal Box-Sizing */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Base Body Styles */
+body {
+    font-family: 'Inter', sans-serif; /* Changed to Inter to match HTML link */
+    line-height: 1.6;
+    color: #333;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to right, #FFD1DC, #AEC6CF);
+    /* Smooth scroll for anchor links */
+    scroll-behavior: smooth;
+}
+
+/* --- INSECURE CLIENT-SIDE LOGIN STYLES --- */
+#login-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, #FFD1DC, #AEC6CF);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999; /* Ensures it's on top of everything */
+}
+
+.login-container {
+    background: linear-gradient(to right, #AEC6CF, #FFD1DC);
+    padding: 40px 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    width: 90%;
+    max-width: 700px;
+}
+
+.login-container h2 {
+    margin-bottom: 25px;
+    color: #222;
+    font-size: 2em;
+}
+
+#login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+#login-form label {
+    text-align: left;
+    font-weight: bold;
+    color: #555;
+    margin-bottom: -10px; /* Pull label closer to input */
+}
+
+#login-form input[type="text"],
+#login-form input[type="password"] {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+    width: 100%;
+}
+
+#login-form button {
+    background-color: #000000;
+    color: #fff;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1em;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: 15px;
+}
+
+#login-form button:hover {
+    background-color: #0056b3;
+    transform: scale(1.03);
+}
+
+.login-tip {
+    font-size: 0.9em;
+    color: #777;
+    margin-top: 15px;
+}
+
+.security-warning {
+    color: #d9534f; /* Red color for warning */
+    font-size: 0.8em;
+    margin-top: 20px;
+    border: 1px solid #d9534f;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #fdd;
+}
+/* Hide portfolio content by default until login (handled by JS) */
+#portfolio-content.hidden {
+    display: none;
+}
+/* --- END OF INSECURE LOGIN STYLES --- */
+
+
+/* Navigation Bar Styles */
+.navbar {
+    background-color: #C4A484;
+    color: #fff;
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.navbar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.navbar ul li {
+    margin: 0 15px;
+}
+
+.navbar ul li a {
+    color: #fff;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+    border-radius: 4px;
+}
+
+.navbar ul li a:hover,
+.navbar ul li a:focus {
+    background-color: #555;
+    color: #007bff; /* Changed to match primary accent color */
+    transform: scale(1.05);
+}
+
+/* Style for active navigation link */
+.navbar ul li a.active {
+    background-color: #007bff; /* Primary accent color for active link */
+    color: #fff;
+    font-weight: bold;
+    box-shadow: 0 2px 5px rgba(0, 123, 255, 0.4);
+}
+/* Style for active footer navigation link */
+footer nav ul li a.active {
+    color: #007bff;
+    text-decoration: underline;
+}
+
+/* Logout Button Style (added to Navbar) */
+.logout-btn {
+    background-color: #666; /* Red color for logout */
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-left: 15px; /* Add some space from other nav items */
+}
+
+.logout-btn:hover {
+    background-color: #c82333;
+    transform: scale(1.05);
+}
+
+/* Adjust navbar li for button alignment if necessary */
+.navbar ul li .logout-btn {
+    display: block; /* Make it block within the list item for better alignment */
+    line-height: 1.5; /* Align vertically with text links */
+}
+
+
+/* --- Keyframe Animations --- */
+/* Fade in from bottom for sections and hero elements */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Hero Section Styles */
+.hero-section {
+    background: linear-gradient(to right, #FFD1DC, #AEC6CF);
+    text-align: center;
+    padding: 50px 20px;
+    margin-bottom: 20px;
+    overflow: hidden; /* Important to hide elements before their animation starts */
+}
+
+/* Initial state for hero elements before animation (controlled by JS adding animate-visible) */
+.hero-section .greeting,
+.hero-section .name,
+.hero-section .role,
+.hero-section img {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+/* Styles applied when the 'animate-visible' class is added by JS for hero elements */
+.hero-section .greeting.animate-visible {
+    animation: fadeInUp 0.8s ease-out forwards;
+    animation-delay: 0.2s; /* Delay for sequential appearance */
+}
+.hero-section .name.animate-visible {
+    animation: fadeInUp 0.8s ease-out forwards;
+    animation-delay: 0.4s;
+}
+.hero-section .role.animate-visible {
+    animation: fadeInUp 0.8s ease-out forwards;
+    animation-delay: 0.6s;
+}
+.hero-section img.animate-visible {
+    animation: fadeInUp 0.8s ease-out forwards;
+    animation-delay: 0.8s; /* After text appears */
+}
+
+
+.greeting {
+    font-size: 2.5em;
+    font-weight: 700;
+    margin-bottom: -0.2em;
+    color:white;
+}
+
+.name {
+    font-size: 3.5em;
+    font-weight: 700;
+    margin: 0 auto; /* Correctly centers horizontally */
+    margin-top: 0;
+    margin-bottom: -0.1em; /* Adjust as needed for spacing */
+    color:white;
+}
+
+.name span {
+    color: #ff5722; /* Accent color for name */
+}
+
+.role {
+    font-size: 1.5em;
+    font-weight: 500;
+    margin-top: 0;
+    color:white;
+}
+
+/* Image styles - targeting specifically the image in the hero section for clarity */
+.hero-section img {
+    border-radius: 50%;
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    border: 5px solid #fff;
+    margin-top: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: block;
+    margin: 20px auto 0 auto; /* Ensures centering and adds top margin */
+}
+
+/* Optional Call to Action Button in Hero */
+.btn-primary {
+    display: inline-block;
+    background-color: #007bff;
+    color: #fff;
+    padding: 12px 25px;
+    border-radius: 5px;
+    font-size: 1.1em;
+    margin-top: 30px;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}
+
+
+/* General Content Styling */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1, h2, h3 {
+    color: #333;
+    margin-bottom: 15px;
+}
+
+h1 {
+    font-size: 2.8em;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 2.2em;
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background: #007bff;
+    margin: 10px auto 0;
+}
+
+h3 {
+    font-size: 1.6em;
+    margin-top: 25px;
+    margin-bottom: 10px;
+    color: #007bff; /* Primary accent color */
+}
+
+p {
+    margin-bottom: 10px;
+}
+
+a {
+    color: #007bff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 15px;
+}
+
+li {
+    margin-bottom: 5px;
+}
+
+/* --- Sections (General Styling & Animation on Scroll) --- */
+section {
+    padding: 60px 20px;
+    margin: 20px auto;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    max-width: 1000px;
+
+    /* Initial state for elements that will be animated on scroll (controlled by JS adding animate-visible) */
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.7s ease-out, transform 0.7s ease-out; /* Fallback transition */
+}
+
+/* Styles applied when the 'animate-visible' class is added by JS */
+section.animate-visible {
+    opacity: 1;
+    transform: translateY(0);
+    animation: fadeInUp 0.7s ease-out forwards;
+}
+
+
+#about ul,
+#skills ul {
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+    padding-left: 20px;
+}
+
+#about li,
+#skills li {
+    margin-bottom: 10px;
+    position: relative;
+    padding-left: 25px;
+}
+
+#about li::before,
+#skills li::before {
+    content: '•';
+    color: #007bff;
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+}
+
+/* --- Projects Section --- */
+#projects article {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 25px;
+    margin-bottom: 25px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+#projects article:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+#projects article h3 {
+    color: #333;
+    margin-bottom: 10px;
+}
+
+#projects article p {
+    margin-bottom: 10px;
+}
+
+#projects article a {
+    display: inline-block;
+    margin-right: 15px;
+    padding: 8px 15px;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#projects article a:hover {
+    background-color: #0056b3;
+    text-decoration: none;
+    transform: scale(1.05);
+}
+
+/* --- Resume Section --- */
+#resume a {
+    display: inline-block;
+    padding: 12px 25px;
+    background-color: #28a745; /* Green for download button */
+    color: #fff;
+    border-radius: 5px;
+    font-size: 1.1em;
+    margin-top: 20px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#resume a:hover {
+    background-color: #218838;
+    text-decoration: none;
+    transform: scale(1.05);
+}
+
+/* --- Certifications Section --- */
+#certifications article {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+#certifications article:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+#certifications article h3 {
+    margin-bottom: 5px;
+    color: #333;
+}
+
+#certifications article p {
+    font-size: 0.95em;
+    color: #555;
+}
+
+/* Image specifically for the certificate */
+#certifications article img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin-top: 15px;
+    border-radius: 5px;
+    transition: transform 0.3s ease;
+}
+
+#certifications article img:hover {
+    transform: scale(1.02);
+}
+
+
+/* --- Contact Section --- */
+#contact {
+    text-align: center;
+}
+
+#contact form {
+    max-width: 600px;
+    margin: 0 auto 30px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+#contact label {
+    text-align: left;
+    font-weight: bold;
+    color: #555;
+}
+
+#contact input[type="text"],
+#contact input[type="email"],
+#contact textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#contact input[type="text"]:focus,
+#contact input[type="email"]:focus,
+#contact textarea:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.2);
+    outline: none;
+}
+
+#contact textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+#contact button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1em;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#contact button:hover {
+    background-color: #0056b3;
+    transform: scale(1.03);
+}
+
+#contact p {
+    margin-top: 10px;
+}
+
+/* --- Blog Section --- */
+#blog article {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+#blog article:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+#blog article h3 {
+    margin-bottom: 5px;
+    color: #333;
+}
+
+/* --- Footer --- */
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 30px 20px;
+    margin-top: 40px;
+}
+
+footer p {
+    margin-bottom: 15px;
+    font-size: 0.9em;
+}
+
+footer nav ul {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin-bottom: 20px;
+}
+
+footer nav ul li a {
+    color: #fff;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+footer nav ul li a:hover {
+    color: #007bff;
+}
+
+.social-links a { /* Changed from footer div a to be more specific with a class */
+    color: #fff;
+    margin: 0 10px;
+    font-size: 1.1em;
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: #007bff;
+}
+
+footer a[href*="terms-privacy"] {
+    display: block;
+    color: #ccc;
+    text-decoration: none;
+    margin-top: 15px;
+    font-size: 0.9em;
+}
+
+footer a[href*="terms-privacy"]:hover {
+    color: #007bff;
+}
+
+/* --- Family Tree Specific CSS --- */
+.family-tree-container {
+    position: relative;
+    padding-bottom: 40px;
+    padding-top: 40px;
+}
+
+.parents-row {
+    position: relative;
+    margin-bottom: 80px;
+}
+
+.parents-row::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px; /* Approximate width needed to span between two images with space-x-12 */
+    left: calc(50% - 60px); /* Start 60px left of center */
+    margin-left: -60px; /* To account for width from center */
+    top: 50%;
+    height: 2px;
+    background-color: #9CA3AF;
+    transform: translateY(-50%);
+    z-index: 0;
+}
+
+.parents-row::after {
+    content: '';
+    position: absolute;
+    bottom: -80px;
+    left: 50%;
+    width: 2px;
+    height: 80px;
+    background-color: #9CA3AF;
+    transform: translateX(-50%);
+    z-index: 0;
+}
+
+.children-row {
+    position: relative;
+    padding-top: 40px;
+}
+
+.children-row::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: calc(100% - 100px);
+    height: 2px;
+    background-color: #9CA3AF;
+    transform: translate(-50%, -50%);
+    z-index: 0;
+}
+
+.children-row .member::after {
+    content: '';
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    width: 2px;
+    height: 40px;
+    background-color: #9CA3AF;
+    transform: translateX(-50%);
+    z-index: -1;
+}
+
+.member {
+    position: relative;
+    z-index: 1;
+}
+
+/* --- Responsive Design (Media Queries) --- */
+
+/* For screens smaller than 768px (e.g., tablets and large phones) */
+@media (max-width: 768px) {
+    /* Navbar responsiveness */
+    .navbar ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .navbar ul li {
+        margin: 10px 0;
+    }
+
+    h1 {
+        font-size: 2.2em;
+    }
+
+    h2 {
+        font-size: 1.8em;
+    }
+
+    h3 {
+        font-size: 1.4em;
+    }
+
+    .hero-section {
+        padding: 40px 15px;
+    }
+
+    .hero-section img {
+        width: 150px;
+        height: 150px;
+    }
+
+    section {
+        padding: 40px 15px;
+        margin: 15px auto;
+    }
+
+    #about ul,
+    #skills ul {
+        columns: 1;
+        -webkit-columns: 1;
+        -moz-columns: 1;
+        padding-left: 0;
+    }
+
+    #about li,
+    #skills li {
+        padding-left: 0;
+    }
+
+    #about li::before,
+    #skills li::before {
+        display: none;
+    }
+
+    #projects article a {
+        display: block;
+        margin-bottom: 10px;
+        margin-right: 0;
+    }
+
+    #contact form {
+        padding: 15px;
+    }
+
+    footer nav ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .social-links a { /* Changed from footer div a to be more specific */
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    /* Login overlay adjustments for smaller screens */
+    .login-container {
+        padding: 30px 20px;
+    }
+    /* Responsive adjustment for logout button */
+    .navbar ul li .logout-btn {
+        margin: 10px 0; /* Align with other nav items when stacked */
+        width: calc(100% - 30px); /* Make it fill available space but respect padding */
+    }
+}
+
+/* For screens smaller than 480px (e.g., small phones) */
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.8em;
+    }
+
+    h2 {
+        font-size: 1.6em;
+    }
+
+    .greeting {
+        font-size: 1.8em; /* Adjusted for smaller screens */
+    }
+    .name {
+        font-size: 2.5em; /* Adjusted for smaller screens */
+    }
+    .role {
+        font-size: 1.2em; /* Adjusted for smaller screens */
+    }
+
+    .hero-section img {
+        width: 120px;
+        height: 120px;
+    }
+
+    section {
+        padding: 30px 10px;
+    }
+
+    #resume a {
+        padding: 10px 20px;
+        font-size: 1em;
+    }
+}
